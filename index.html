@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Video Generator</title>
+    <style>
+        #loading {
+            display: none;
+            font-weight: bold;
+            margin-top: 15px;
+            color: purple;
+        }
+    </style>
+</head>
+<body>
+    <h2>AI Video Generator</h2>
+
+    <form id="videoForm">
+        <input type="text" name="prompt" placeholder="Enter prompt" required>
+        <button type="submit">Generate</button>
+    </form>
+
+    <div id="loading">Generating video... please wait</div>
+
+    <video id="video" controls width="480" style="margin-top:20px;"></video>
+
+    <script>
+        document.getElementById("videoForm").onsubmit = async (e) => {
+            e.preventDefault();
+
+            let formData = new FormData(e.target);
+            let loading = document.getElementById("loading");
+            let videoEl = document.getElementById("video");
+
+            loading.style.display = "block";
+            videoEl.src = "";
+
+            let res = await fetch("/generate", {
+                method: "POST",
+                body: formData
+            });
+
+            let data = await res.json();
+            loading.style.display = "none";
+
+            if (data.video_url) {
+                videoEl.src = data.video_url;
+            } else {
+                alert("Error: " + (data.error || "Unknown error"));
+            }
+        }
+    </script>
+</body>
+</html>
