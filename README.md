@@ -82,4 +82,6 @@ Uses credits each run
 
 Slower (20s–2min)
 
+App link: https://ai-video-app-a89x.onrender.com/ (For now, no matter the text it will always return the sample video because I do not have much credits. So, if you want to see the app working with the text, you know what to do :)
+
 
