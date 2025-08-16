@@ -19,7 +19,7 @@ ai-video-app/
 │── main.py           # FastAPI backend
 │── index.html        # frontend
 │── requirements.txt  # Dependencies
-│── .env              # API keys + config
+│── .env              # API keys 
 │── static/
 │    └── sample.mp4   # Placeholder video
 
